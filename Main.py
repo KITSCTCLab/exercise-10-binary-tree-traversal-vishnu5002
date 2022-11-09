@@ -1,43 +1,21 @@
-class BinaryTreeNode:
-    def __init__(self, data):
-        self.data = data
-        self.left_child = None
-        self.right_child = None
+from typing import List
 
-
-def insert(root, new_value) -> BinaryTreeNode:
-    """If binary search tree is empty, make a new node, declare it as root and return the root.
-        If tree is not empty and if new_value is less than value of data in root, add it to left subtree and proceed recursively.
-        If tree is not empty and if new_value is >= value of data in root, add it to right subtree and proceed recursively.
-        Finally, return the root.
-        """
-    # Write your code here
-
-
-def inorder(root) -> None:
-    # Write your code here
-
-
-def preorder(root) -> None:
-    # Write your code here
-
-
-def postorder(root) -> None:
-    # Write your code here
-
+def insertionSort(array, size) -> List[int]:
+  # Write your code here
+  for i in range(size):
+    min = i
+    for j in range(i + 1, size):
+      if array[min] > array[j]:
+        min = j;
+    array[i], array[min] = array[min], array[i]
+  return array
 
 # Do not change the following code
 input_data = input()
-flag = True
-root = None
+data = []
 for item in input_data.split(', '):
-    if flag is True:
-        root = insert(None, int(item))
-        flag = False
-    else:
-        insert(root, int(item))
-inorder(root)
-print()
-preorder(root)
-print()
-postorder(root)
+  if item.isnumeric():
+    data.append(int(item))
+  elif item.lstrip("-").isnumeric():
+    data.append(int(item))
+print(insertionSort(data, len(data)))
